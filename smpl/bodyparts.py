@@ -4,11 +4,7 @@
 import os
 import sys
 import numpy as np
-
-if sys.version_info[0] == 3:
-    import _pickle as pkl
-else:
-    import cPickle as pkl
+import _pickle as pkl
 
 
 _cache = None

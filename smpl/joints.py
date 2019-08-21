@@ -2,11 +2,7 @@ import os
 import sys
 
 from lib.geometry import sparse_to_tensor, sparse_dense_matmul_batch_tile
-
-if sys.version_info[0] == 3:
-    import _pickle as pkl
-else:
-    import cPickle as pkl
+import _pickle as pkl
 
 body_25_reg = None
 face_reg = None

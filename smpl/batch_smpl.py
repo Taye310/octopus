@@ -46,10 +46,7 @@ import numpy as np
 import tensorflow as tf
 from .batch_lbs import batch_rodrigues, batch_global_rigid_transformation
 
-if sys.version_info[0] == 3:
-    import _pickle as pickle
-else:
-    import cPickle as pickle
+import _pickle as pickle
 
 
 # There are chumpy variables so convert them to numpy.
