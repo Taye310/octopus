@@ -46,7 +46,7 @@ import numpy as np
 import tensorflow as tf
 from .batch_lbs import batch_rodrigues, batch_global_rigid_transformation
 
-import _pickle as pickle
+import pickle as pickle
 
 
 # There are chumpy variables so convert them to numpy.

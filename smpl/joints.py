@@ -2,7 +2,7 @@ import os
 import sys
 
 from lib.geometry import sparse_to_tensor, sparse_dense_matmul_batch_tile
-import _pickle as pkl
+import pickle as pkl
 
 body_25_reg = None
 face_reg = None

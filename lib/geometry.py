@@ -19,7 +19,8 @@ def sparse_dense_matmul_batch(a, b):
         sp = tf.SparseTensor(indices[i, :, 1:], values[i], shape[1:])
         return i, tf.sparse_tensor_dense_matmul(sp, bb)
 
-    _, p = tf.map_fn(matmul, (tf.range(num_b), b))
+    # _, p = tf.map_fn(matmul, (tf.range(num_b), b))
+    _, p = tf.map_fn(lambda (m,n): matmul(m,n),(tf.range(num_b),b))
 
     return p
 

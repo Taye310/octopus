@@ -5,7 +5,7 @@ import numpy as np
 import tensorflow as tf
 import keras.backend as K
 
-from keras.layers import Input, Flatten, Dense, Lambda, Conv2D, MaxPool2D, Average, Concatenate, Add, Reshape
+from keras.layers import Input, Flatten, Dense, Lambda, Conv2D, MaxPool2D, Average, Concatenate, Add, Reshape, merge
 from keras.initializers import RandomNormal
 from keras.models import Model
 from keras.callbacks import LambdaCallback
@@ -21,7 +21,7 @@ from lib.geometry import compute_laplacian_diff, sparse_to_tensor
 from graphconv.util import sparse_dot_adj_batch, chebyshev_polynomials
 from render.render import perspective_projection
 
-import _pickle as pkl
+import pickle as pkl
 
 
 def NameLayer(name):
@@ -200,7 +200,7 @@ class Octopus(object):
         self.vertices_tposed = Lambda(lambda s: s[1], name='vertices_tposed')(smpls[0])
         vertices_naked = Lambda(lambda s: s[2], name='vertices_naked')(smpls[0])
 
-        self.laplacian = Lambda(lambda v0, v1: compute_laplacian_diff(v0, v1, self.faces), name='laplacian')(
+        self.laplacian = Lambda(lambda (v0, v1): compute_laplacian_diff(v0, v1, self.faces), name='laplacian')(
             [self.vertices_tposed, vertices_naked])
         self.symmetry = NameLayer('symmetry')(self.vertices_tposed)
 
